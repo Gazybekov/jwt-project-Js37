@@ -1,8 +1,10 @@
 import React from "react";
 import { useProducts } from "../../context/ProductContextProvider";
+import { useNavigate } from "react-router-dom";
 
 const ProductItem = ({ elem }) => {
   const { deleteProduct } = useProducts();
+  const navigate = useNavigate();
   console.log(elem);
   return (
     <div>
@@ -14,7 +16,7 @@ const ProductItem = ({ elem }) => {
       {elem.is_author ? (
         <>
           <button onClick={() => deleteProduct(elem.id)}>Delete</button>
-          <button>Edit</button>
+          <button onClick={() => navigate(`/edit/${elem.id}`)}>Edit</button>
         </>
       ) : null}
     </div>
